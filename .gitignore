@@ -5,4 +5,3 @@ logs
 slurm*.out
 __pycache__
 .idea
-data
