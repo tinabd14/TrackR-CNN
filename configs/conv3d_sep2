@@ -14,22 +14,22 @@
   "add_masks": true,
 
   # Pretrained model from tensorpack
-  "load_init": "/globalwork/krause/pretrained_models/tensorpack/PReMVOS-COCO-Mapillary-PreProcForKITTISegtrack/converted",
+  "load_init": "C:/Users/Tunar Mahmudov/Desktop/TrackR-CNN/models/converted",
   # Freeze applies to the whole model, not just our backend, but that's fine since only the backend uses batchnorm
   "freeze_batchnorm": true,
   "max_saves_to_keep": 1,
 
   # Training settings
-  "batch_size": 8,
+  "batch_size": 2,
   "learning_rates": "{1: 0.0000005}",
   "optimizer": "adam",
   "num_epochs": 5,
   "max_saves_to_keep": 1,
 
   # Dataset options
-  "KITTI_segtrack_data_dir": "/globalwork/krause/data/KITTI_MOTS/train/",
-  "MOTS_segtrack_data_dir": "/globalwork/krause/data/MOTS_challenge/train/",
-  "optical_flow_path": "/globalwork/krause/data/KITTI_flow_pwc/",
+  "KITTI_segtrack_data_dir": "C:/Users/Tunar Mahmudov/Desktop/TrackR-CNN/data/KITTI_MOTS/train",
+  "MOTS_segtrack_data_dir": "/globalwork/krause/data/MOTS_challenge/train",
+  "optical_flow_path": "/globalwork/krause/data/KITTI_flow_pwc",
   "prefer_gt_to_ignore": true,
   "use_ioa_for_ignore": true,
   "use_masks_for_ignore": true,
@@ -47,8 +47,8 @@
 "detection_confidence_threshold_pedestrian": 0.9368820089063415, "reid_weight_pedestrian": 1.0, "mask_iou_weight_pedestrian": 0.0, "bbox_center_weight_pedestrian": 0.0, "bbox_iou_weight_pedestrian": 0.0, "association_threshold_pedestrian": 0.47985540892434836, "keep_alive_pedestrian": 6, "reid_euclidean_offset_pedestrian": 9.447084376750222, "reid_euclidean_scale_pedestrian": 1.3437965549876354,
 
   "network": {
-    "resnetconv4": {"class": "ResNet101Conv4"},
-    "conv3d_1": {"class": "SepConv3DOverBatch", "activation": "relu", "n_features": 1024, "init_type": "identity", "from": ["resnetconv4"], "old_order": true},
+    "xception": {"class": "XCeption_TOM"},
+    "conv3d_1": {"class": "SepConv3DOverBatch", "activation": "relu", "n_features": 1024, "init_type": "identity", "from": ["xception"], "old_order": true},
     "conv3d_2": {"class": "SepConv3DOverBatch", "activation": "relu", "n_features": 1024, "init_type": "identity", "from": ["conv3d_1"], "old_order": true},
     "frcnn": {"class": "FasterRCNN", "fastrcnn_batch_per_img": 64, "reid_dimension": 128, "reid_loss_per_class": true,
               "reid_loss_factor": 1.0, "reid_loss_variant": 1, "reid_measure": "euclidean", "from": ["conv3d_2"],

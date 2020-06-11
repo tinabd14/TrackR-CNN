@@ -14,7 +14,7 @@ TIMESTEPS_PER_SEQ = {"0002": 600, "0005": 837, "0009": 525, "0011": 900}
 class MotsChallengeDataset(KittiSegtrackDataset):
   def __init__(self, config, subset):
     #TODO: num classes, class_ids_with instances
-    super().__init__(config, subset, name=NAME, default_path=DEFAULT_PATH)
+    super().__init__(config, subset, name=NAME, default_path="C:/Users/Tunar Mahmudov/Desktop/TrackR-CNN/data/KITTI_MOTS/train")
     self.seq_ids_train = SEQ_IDS_TRAIN
     self.seq_ids_val = SEQ_IDS_VAL
     t = config.string_list("seq_ids_train", [])

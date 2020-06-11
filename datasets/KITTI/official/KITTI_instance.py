@@ -2,7 +2,7 @@ from datasets.Loader import register_dataset
 from datasets.Mapillary.MapillaryLike_instance import MapillaryLikeInstanceDataset
 from datasets.util.Util import username
 
-DEFAULT_PATH = "/home/" + username() + "/data/KITTI_instance/"
+DEFAULT_PATH = "C:/Users/Tunar Mahmudov/Desktop/TrackR-CNN/data/KITTI_MOTS"
 NAME = "KITTI_instance"
 
 

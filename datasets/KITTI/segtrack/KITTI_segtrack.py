@@ -13,7 +13,7 @@ import os
 
 NAME = "KITTI_segtrack"
 NAME_DETECTION = "KITTI_segtrack_detection"
-DEFAULT_PATH = "/globalwork/" + username() + "/data/KITTI_MOTS/train/"
+DEFAULT_PATH = "C:/Users/Tunar Mahmudov/Desktop/TrackR-CNN/data/KITTI_MOTS/train"
 ID_DIVISOR = 1000
 CLASS_IDS_WITH_INSTANCES = [1, 2]
 CROWD_ID = 10
@@ -24,7 +24,7 @@ N_MAX_DETECTIONS = 100
 # used for detection on individual images
 @register_dataset(NAME_DETECTION)
 class KittiSegtrackDetectionDataset(MapillaryLikeDetectionFileListDataset):
-  def __init__(self, config, subset, name=NAME, default_path=DEFAULT_PATH):
+  def __init__(self, config, subset, name=NAME, default_path="C:/Users/Tunar Mahmudov/Desktop/TrackR-CNN/data/KITTI_MOTS/train"):
     self.seq_ids_train = SEQ_IDS_TRAIN
     self.seq_ids_val = SEQ_IDS_VAL
     self.imgs_are_pngs = config.bool("imgs_are_pngs", True)
@@ -63,7 +63,7 @@ class KittiSegtrackDetectionDataset(MapillaryLikeDetectionFileListDataset):
 # used for training on chunks of video
 @register_dataset(NAME)
 class KittiSegtrackDataset(KittiSegtrackDetectionDataset):
-  def __init__(self, config, subset, name=NAME, default_path=DEFAULT_PATH):
+  def __init__(self, config, subset, name=NAME, default_path="C:/Users/Tunar Mahmudov/Desktop/TrackR-CNN/data/KITTI_MOTS/train"):
     # batch size here is the number of time steps considered in a chunk
     # TODO: what do we do at test time?
     self._batch_size = config.int("batch_size")
@@ -126,7 +126,7 @@ def successor_frame_filename(filename, offset):
 
 def successor_frame_filename_np(filename, offset):
   filename = filename.decode("utf-8")
-  sp = filename.split("/")
+  sp = filename.replace("\\","/").split("/")
   png = ".png" in sp[-1]
   t = int(sp[-1].replace(".png", "").replace(".jpg", ""))
   if png:
